@@ -1,0 +1,10 @@
+README.md
+pyproject.toml
+src/learn_python.egg-info/PKG-INFO
+src/learn_python.egg-info/SOURCES.txt
+src/learn_python.egg-info/dependency_links.txt
+src/learn_python.egg-info/requires.txt
+src/learn_python.egg-info/top_level.txt
+src/learn_python/exercises/exercise_1.py
+src/learn_python/framework/_exercise.py
+tests/test_exercise.py

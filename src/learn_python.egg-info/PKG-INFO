@@ -1,0 +1,10 @@
+Metadata-Version: 2.4
+Name: learn-python
+Version: 0.1.0
+Summary: Add your description here
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+Requires-Dist: colorama>=0.4.6
+Requires-Dist: ipytest>=0.14.2
+Requires-Dist: pydantic>=2.12.3
+Requires-Dist: pytest>=8.4.2

@@ -1,0 +1,19 @@
+[project]
+name = "learn-python"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "colorama>=0.4.6",
+    "ipytest>=0.14.2",
+    "pydantic>=2.12.3",
+    "pytest>=8.4.2",
+]
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]

@@ -1,0 +1,4 @@
+colorama>=0.4.6
+ipytest>=0.14.2
+pydantic>=2.12.3
+pytest>=8.4.2

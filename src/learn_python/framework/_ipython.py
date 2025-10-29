@@ -28,5 +28,7 @@ def ipython_setup():
 
 
 def _post_execute_hook():
+    if default_queue.is_empty():
+        return
     results = default_queue.run()
     format_results(results)

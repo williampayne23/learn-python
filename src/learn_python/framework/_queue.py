@@ -41,6 +41,14 @@ class TestQueue:
         """Clear the queue of pending exercises."""
         self.queue = []
 
+    def is_empty(self):
+        """Check if the queue is empty.
+
+        Returns:
+            True if the queue is empty, False otherwise
+        """
+        return len(self.queue) == 0
+
 
 # Global singleton queue instance
 default_queue = TestQueue()

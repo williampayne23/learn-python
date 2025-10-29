@@ -11,7 +11,7 @@ def test_register_solution_with_custom_queue():
         assert solution(2, 3) == 5
         return "Good math"
 
-    @exercise.register_solution(queue)
+    @exercise.score(queue)
     def my_solution(a, b):
         return a + b
 
@@ -32,7 +32,7 @@ def test_register_solution_with_default_queue():
         assert solution() == 100
         return "Pass"
 
-    @exercise.register_solution()
+    @exercise.score()
     def my_solution():
         return 100
 
@@ -51,7 +51,7 @@ def test_register_solution_decorator_returns_function():
     def test_func(solution):
         return "OK"
 
-    @exercise.register_solution(queue)
+    @exercise.score(queue)
     def my_solution():
         return 42
 
@@ -69,7 +69,7 @@ def test_register_solution_runs_successfully():
         assert solution(5) == 25
         return "Correct"
 
-    @exercise.register_solution(queue)
+    @exercise.score(queue)
     def square(x):
         return x * x
 

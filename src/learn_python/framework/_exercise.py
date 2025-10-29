@@ -47,7 +47,7 @@ class Exercise:
 
         return decorator
 
-    def register_solution(self, queue=None):
+    def score(self, queue=None):
         """Decorator to register a solution for this exercise to a queue.
 
         Usage:
@@ -61,11 +61,14 @@ class Exercise:
         Returns:
             Decorator function
         """
+
         def decorator(solution):
             from ._queue import default_queue
+
             target_queue = queue or default_queue
             target_queue.add(self, solution)
             return solution
+
         return decorator
 
     def parametrize(self, argnames, argvalues):

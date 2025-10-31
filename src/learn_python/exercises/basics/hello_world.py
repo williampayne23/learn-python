@@ -1,9 +1,13 @@
 from learn_python.framework import Exercise, capture_output
 
-exercise_1a = Exercise()
+ex_hello_world_a = Exercise(
+    "hello_world",
+    "Write a function that prints 'Hello World!'",
+    lambda: print("Hello World!"),
+)
 
 
-@exercise_1a.test()
+@ex_hello_world_a.test()
 def print_something(solution):
     with capture_output() as captured:
         solution()
@@ -12,7 +16,7 @@ def print_something(solution):
     return "Good you printed something!"
 
 
-@exercise_1a.test(name='Print "Hello World!"')
+@ex_hello_world_a.test(name='Print "Hello World!"')
 def print_right_thing(solution):
     with capture_output() as captured:
         solution()
@@ -21,13 +25,17 @@ def print_right_thing(solution):
     return "Good you printed Hello World!"
 
 
-exercise_1b = Exercise()
+ex_hello_world_b = Exercise(
+    "hello_name",
+    "Write a function that takes a name as input and prints 'Hello name!'",
+    lambda name: print(f"Hello {name}!"),
+)
 
 
-@exercise_1b.test(name='Print "Hello name!"')
+@ex_hello_world_b.test(name='Print "Hello name!"')
 def print_hello_name(solution):
     with capture_output() as captured:
-        solution("Jess")
+        solution("Name")
         output = captured.readouterr()
-        assert "Hello Jess!" in output.out, 'You need to print "Hello name!"'
+        assert "Hello Name!" in output.out, 'You need to print "Hello name!"'
     return "Yay!"

@@ -1,8 +1,8 @@
 Metadata-Version: 2.4
 Name: learn-python
-Version: 0.1.0
+Version: 0.1.1
 Summary: Add your description here
-Requires-Python: >=3.9
+Requires-Python: >=3.10
 Description-Content-Type: text/markdown
 Requires-Dist: colorama>=0.4.6
 Requires-Dist: ipytest>=0.14.2

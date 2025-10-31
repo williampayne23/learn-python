@@ -4,6 +4,8 @@ from pydantic import BaseModel
 import inspect
 import uuid
 
+all_exercises = []
+
 
 class Result(BaseModel):
     test_name: str
@@ -28,10 +30,33 @@ class TestFunction(BaseModel):
 
 
 class Exercise:
-    def __init__(self, name: Optional[str] = None):
+    name: str
+    """
+    The name of the exercise.
+    """
+
+    description: str = ""
+    """
+    A description of the exercise.
+    """
+
+    example_solution: Optional[Callable]
+    """
+    An example solution function for the exercise.
+    """
+
+    def __init__(
+        self,
+        name: Optional[str] = None,
+        description: Optional[str] = None,
+        example_solution: Optional[Callable] = None,
+    ):
         self.name = name or ""
+        self.description = description or ""
         self.tests = {}  # UUID -> TestFunction
         self.fixtures = {}
+        self.example_solution = example_solution
+        all_exercises.append(self)
 
     def test(self, name=None):
         def decorator(func):
@@ -98,7 +123,7 @@ class Exercise:
 
         return decorator
 
-    def run_tests(self, solution):
+    def run_tests(self, solution) -> list[Result | ParametrizedResult]:
         results = []
         for test_info in self.tests.values():
             kwargs = self._get_kwargs_from_fixtures(test_info.function, solution)
@@ -228,3 +253,16 @@ class Exercise:
             )
         except AssertionError as e:
             return Result(test_name=test_name, status="failure", message=str(e))
+
+    def __repr__(self):
+        return f"<Exercise name={self.name}>"
+
+    def __str__(self):
+        return self.name
+
+    def __add__(self, other):
+        if not isinstance(other, Exercise):
+            return NotImplemented
+        self.tests.update(other.tests)
+        self.fixtures.update(other.fixtures)
+        return self

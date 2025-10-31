@@ -5,6 +5,14 @@ src/learn_python.egg-info/SOURCES.txt
 src/learn_python.egg-info/dependency_links.txt
 src/learn_python.egg-info/requires.txt
 src/learn_python.egg-info/top_level.txt
-src/learn_python/exercises/exercise_1.py
+src/learn_python/exercises/__init__.py
+src/learn_python/exercises/basics/__init__.py
+src/learn_python/exercises/basics/add_two_numbers.py
+src/learn_python/exercises/basics/hello_world.py
+src/learn_python/framework/__init__.py
+src/learn_python/framework/_capture.py
 src/learn_python/framework/_exercise.py
-tests/test_exercise.py
+src/learn_python/framework/_formatter.py
+src/learn_python/framework/_ipython.py
+src/learn_python/framework/_queue.py
+src/learn_python/solutions/exercise_1.py

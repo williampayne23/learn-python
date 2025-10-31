@@ -53,3 +53,18 @@ def test_fixture_decorator_custom_name():
     assert "Custom Data" in exercise.fixtures
     assert exercise.fixtures["Custom Data"]["name"] == "Custom Data"
     assert exercise.fixtures["Custom Data"]["function"] == test_data
+
+
+def test_parametrize_decorator_registration():
+    """Test that @exercise.parametrize decorator registers parametrization data."""
+    exercise = Exercise()
+
+    @exercise.parametrize("x,y,expected", [(1, 2, 3), (2, 3, 5), (5, 5, 10)])
+    @exercise.test("Addition test")
+    def test_add(solution, x, y, expected):
+        return "OK"
+
+    test_info = list(exercise.tests.values())[0]
+    assert test_info.param_data is not None
+    assert test_info.param_data.argnames == ("x", "y", "expected")
+    assert test_info.param_data.argvalues == [(1, 2, 3), (2, 3, 5), (5, 5, 10)]
